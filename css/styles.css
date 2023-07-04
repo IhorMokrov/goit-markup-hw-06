@@ -209,6 +209,7 @@
   line-height: 1.88;
   letter-spacing: 0.06em;
   color: var(--focus-text-color);
+  cursor: pointer;
 
   background-color: var(--focus-color);
   border: none;
@@ -302,8 +303,9 @@
 
 .form-field .input:hover,
 .form-field .input:focus {
-  outline: 1px solid var(--focus-color);
-  outline-offset: -1px;
+  outline: none;
+  border-color: var(--focus-color);
+  /* outline-offset: -1px; */
 }
 
 .form-field .input:hover ~ .icon,
@@ -317,6 +319,8 @@
   left: 12px;
   transform: translateY(-50%);
   fill: var(--inactive-black);
+
+  transition: fill 250ms var(--cubic-animation);
 }
 
 .form-field .input {
@@ -326,6 +330,8 @@
 
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
+
+  transition: border-color 250ms var(--cubic-animation);
 }
 
 .input.textarea {
@@ -352,20 +358,30 @@
 .icon-checkbox-container {
   position: relative;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* outline: 2px solid tomato; */
 }
 
 .modal-agree .icon-checkbox-checked {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
+  opacity: 0;
+  /* outline: 2px solid green; */
+
+  transition: opacity 250ms var(--cubic-animation);
 }
 
 .modal-agree
   .checkbox:checked
   ~ .icon-checkbox-container
   .icon-checkbox-checked {
-  top: 0;
+  opacity: 1;
+}
+
+.modal-agree .checkbox ~ .icon-checkbox-container .icon-checkbox {
+  opacity: 1;
+  transition: opacity 250ms var(--cubic-animation);
 }
 
 .modal-agree .checkbox:checked ~ .icon-checkbox-container .icon-checkbox {
@@ -886,6 +902,7 @@
   line-height: 1.88;
   font-weight: 700;
   letter-spacing: 0.96px;
+  cursor: pointer;
 
   background: var(--focus-color);
   border: 1px solid var(--focus-color);
